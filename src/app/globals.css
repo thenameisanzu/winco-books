@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --nav-h: 4.5rem;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-paper text-ink font-body antialiased;
+    font-feature-settings: 'kern' 1, 'liga' 1, 'onum' 1;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: #EF7D00;
+    color: #f4efe4;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
+    font-variation-settings: 'SOFT' 20, 'WONK' 1;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid #EF7D00;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Lenis */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-wide px-5 sm:px-8 lg:px-12;
+  }
+
+  .measure {
+    @apply max-w-measure;
+  }
+
+  /* A hairline that reads as a printed rule, not a UI divider */
+  .rule {
+    @apply h-px w-full bg-rule;
+  }
+
+  .eyebrow {
+    @apply font-body text-sm italic text-ink-soft;
+  }
+
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .link-underline:hover {
+    background-size: 100% 1px;
+  }
+
+  .btn {
+    @apply relative inline-flex items-center justify-center rounded-full px-7 py-3.5 text-base
+           transition-colors duration-300 ease-quill;
+  }
+  .btn-solid {
+    @apply bg-saffron text-ink hover:bg-ink hover:text-paper;
+  }
+  .btn-ghost {
+    @apply border border-ink/25 text-ink hover:border-ink hover:bg-ink hover:text-paper;
+  }
+
+  /* Paper texture: very light, generated, no image asset needed */
+  .grain::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    mix-blend-mode: multiply;
+    background-image: radial-gradient(#00000010 0.5px, transparent 0.5px),
+      radial-gradient(#00000008 0.5px, transparent 0.5px);
+    background-size: 3px 3px, 7px 7px;
+    background-position: 0 0, 2px 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
