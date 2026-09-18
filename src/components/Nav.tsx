@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion';
 import { nav, site } from '@/data/content';
@@ -39,8 +40,18 @@ export default function Nav() {
         }`}
       >
         <div className="shell flex h-[var(--nav-h)] items-center justify-between">
-          <a href="#top" className="font-display text-xl tracking-tight sm:text-2xl" aria-label="Winco Books, home">
-            Winco <span className="italic text-ember">Books</span>
+          <a href="#top" className="flex items-center gap-2.5 group" aria-label="Winco Books, home">
+            <Image
+              src="/logo.png"
+              alt="Winco Books Logo"
+              width={40}
+              height={36}
+              className="h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              priority
+            />
+            <span className="font-display text-xl tracking-tight sm:text-2xl leading-none">
+              Winco <span className="italic text-ember">Books</span>
+            </span>
           </a>
 
           <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
@@ -111,7 +122,19 @@ export default function Nav() {
             transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
           >
             <div className="flex h-full flex-col justify-between px-6 pb-8 pt-24 overflow-y-auto">
-              <nav className="flex flex-col gap-1" aria-label="Mobile">
+              <div className="flex items-center gap-3 pb-6 border-b border-paper/15">
+                <Image
+                  src="/logo.png"
+                  alt="Winco Books Logo"
+                  width={44}
+                  height={40}
+                  className="h-10 w-auto object-contain brightness-110"
+                />
+                <span className="font-display text-2xl text-paper">
+                  Winco <span className="italic text-saffron">Books</span>
+                </span>
+              </div>
+              <nav className="flex flex-col gap-1 mt-4" aria-label="Mobile">
                 {nav.map((item, i) => (
                   <motion.a
                     key={item.href}

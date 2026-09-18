@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 
@@ -35,7 +36,22 @@ export default function Preloader() {
           exit={{ y: '-100%' }}
           transition={{ duration: 1.05, ease: [0.76, 0, 0.24, 1] }}
         >
-          <div className="text-center">
+          <div className="text-center flex flex-col items-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
+              className="mb-4"
+            >
+              <Image
+                src="/logo.png"
+                alt="Winco Books Logo"
+                width={80}
+                height={72}
+                className="h-16 w-auto object-contain brightness-110"
+                priority
+              />
+            </motion.div>
             <motion.p
               className="font-display text-4xl text-paper sm:text-5xl"
               initial={{ opacity: 0, letterSpacing: '0.4em' }}

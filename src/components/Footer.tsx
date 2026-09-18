@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { nav, site } from '@/data/content';
 import {
   InstagramIcon,
@@ -20,9 +21,18 @@ export default function Footer() {
         <div className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1.2fr]">
           {/* Column 1: Brand & Location */}
           <div>
-            <p className="font-display text-2xl">
-              Winco <span className="italic text-ember">Books</span>
-            </p>
+            <div className="flex items-center gap-3">
+              <Image
+                src="/logo.png"
+                alt="Winco Books Logo"
+                width={48}
+                height={42}
+                className="h-11 w-auto object-contain"
+              />
+              <p className="font-display text-2xl">
+                Winco <span className="italic text-ember">Books</span>
+              </p>
+            </div>
             <p className="measure mt-3 text-base text-ink-soft">{site.tagline}</p>
             <a
               href={site.googleMapsUrl}
